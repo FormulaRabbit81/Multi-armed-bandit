@@ -100,11 +100,11 @@ class EpsilonGreedy(Agent):
                                                 reward, timesselected[i])
         return results, optimalrewardselected
 
-    def multsim(self, arms=int, mean=0, var=1, playvar=1, runnum=1):
+    def multsim(self, testbed, runnum=100):
         rewardsmat = []
         optimalsmat = []
         for run in range(runnum):
-            res = self.play(Testbed(arms, mean=mean, var=var, playvar=playvar))
+            res = self.play(testbed)
             rewardsmat.append(res[0])
             optimalsmat.append(res[1])
         run_rewards_df = pd.DataFrame(rewardsmat).T
